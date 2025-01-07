@@ -24,5 +24,3 @@ btnPopup.addEventListener("click", ()=>{
 iconClose.addEventListener("click", ()=>{
     cuadro.classList.remove("active-popup");
 });
-
-//Soy un cambio en el local queriendo subir a main
