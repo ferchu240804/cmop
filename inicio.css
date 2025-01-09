@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    min-height: 100vh; /* Cada sección ocupará al menos toda la altura de la ventana */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9ecef;
+    border-bottom: 1px solid #ccc;
+}
+
+.content:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+footer {
+    background: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer .icon {
+    font-size: 40px; /* Tamaño del ícono */
+    color: #25D366; /* Color característico de WhatsApp */
+    margin-top: 10px;
+    cursor: pointer; /* Para que parezca un botón */
+    transition: transform 0.3s ease-in-out;
+}
+
+footer .icon:hover {
+    transform: scale(1.2); /* Efecto al pasar el mouse */
+}
