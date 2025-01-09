@@ -7,7 +7,7 @@ const btnPopup=document.querySelector(".btnLogin-popup")
 const iconClose=document.querySelector(".icon-close")
 
 const loginbutton=document.querySelector(".btn")
-const Registrarsebutton=document.querySelector(".login-register")
+const Registrarsebutton=document.querySelector("#login-register")
 
 
 registerlink.addEventListener("click", ()=>{
@@ -28,20 +28,23 @@ iconClose.addEventListener("click", ()=>{
     cuadro.classList.remove("active-popup");
 });
 
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-
-/*  PARA LOGEAR   */ 
+/* BOTON  PARA LOGEAR   */ 
 loginbutton.addEventListener("click", (event) =>{
     event.preventDefault();
 
 
 
-    const email=document.getElementById("email").value;
+    const user=document.getElementById("USER").value;
     const password=document.getElementById("password").value;
 
-    console.log("EMAIL: " + email + ". PASSWORD: " + password);
+    console.log("USERNAME: " + user + ". PASSWORD: " + password);
 
-    flaglogin = iniciarSesion(email, password);
+    flaglogin = iniciarSesion(user, password);
     if (flaglogin==true){
         window.location.href="inicio.html"
     } else {
@@ -52,48 +55,86 @@ loginbutton.addEventListener("click", (event) =>{
     }
 });
 
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* BOTON PARA REGISTRARSE */
 
-/* PARA REGISTRARSE */
-
-
-Registrarsebutton.addEventListener("click", (event) =>{
+Registrarsebutton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    /*flaglogin=function(emial,password)*/
+    const username = document.getElementById("user").value;
+    const email = document.getElementById("emailR").value;
+    const password = document.getElementById("passwordR").value;
 
-    const username=document.getElementById("user").value;
-    const email=document.getElementById("emailR").value;
-    const password=document.getElementById("passwordR").value;
+    const registrado = registrarusuario(username, email, password);
 
-    console.log( "USERNAME: " +username + "EMAIL: " + email + ". PASSWORD: " + password );
-
-    flaglogin = registrarse(username,email, password);
-    if (flaglogin==true){
-        window.location.href="inicio.html"
-    } else {
-        // Muestra el mensaje en el div
-    document.getElementById("mensaje-error").innerText = "Usuario o Contraseña incorrecta";
-    document.getElementById("mensaje-error").style.display = "block";  // Muestra el div
-
+    if (registrado) {
+        // Crea el elemento del mensaje dinámicamente
+        const mensaje = document.createElement("div");
+        mensaje.id = "mensaje-registro";
+        mensaje.style.color = "green";
+        mensaje.style.marginTop = "10px";
+        mensaje.textContent = "Cuenta registrada, ya puede iniciar sesión.";
+    
+        // Inserta el mensaje en el formulario de registro
+        const formRegistro = document.querySelector(".form-box.register");
+        formRegistro.appendChild(mensaje);
+    
+        // Asegúrate de ocultar cualquier mensaje de error previo
+        const mensajeError = document.getElementById("mensaje-error");
+        if (mensajeError) mensajeError.style.display = "none";
     }
 });
 
 
 
+// ERROR
+/*Registrarsebutton.addEventListener("click", (event) => {
+    event.preventDefault();
 
-function iniciarSesion(user, pass){
+    const username = document.getElementById("user").value;
+    const email = document.getElementById("emailR").value;
+    const password = document.getElementById("passwordR").value;
+
+    console.log("USERNAME: " + username + ", EMAIL: " + email + ", PASSWORD: " + password);
+    
+});*/
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/*FUNCION INICAR SESION */
+
+function iniciarSesion(user, pass) {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || []; // Obtiene los usuarios del localStorage.
+
+    console.log("Usuarios registrados:", usuarios);
+
+    // Verifica si existe un usuario con el nombre de usuario y contraseña proporcionados
+    let usuarioExistente = usuarios.find(u => u.user === user && u.password === pass);
+
+    return usuarioExistente ? true : false;
+}
+
+
+// ERROR
+/*function iniciarSesion(user, pass){
 
     let usuarios=JSON.parse(localStorage.getItem("usuarios")) || [];
     console.log("usuarios" + usuarios);
 
     let usuarioExistente= false;
-    usuarioExistente = usuarios.find(u=> u.username==user);
+    usuarioExistente = usuarios.find(u=> u.user==USER);
 
     console.log("user: " + user + ". PASSWORD: " + pass + ". usuarioExistente: " + usuarioExistente);
 
 
     if (usuarioExistente){
-        if (usuarios.find(u=> u.username==user && u.password==pass)){
+        if (usuarios.find(u=> u.user==USER && u.passwordR==password)){
             return true
         } else {
             return false
@@ -102,19 +143,58 @@ function iniciarSesion(user, pass){
     } else {
         return false
     }
+}*/
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* FUNCION REGISTRARSE */
+
+function registrarusuario(user, email, pass) {
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || []; // Obtiene los usuarios existentes o crea un array vacío.
+
+    // Verifica si el email o el username ya existen
+    let usuarioExistente = usuarios.find(u => u.email === email || u.user === user);
+
+    if (usuarioExistente) {
+        document.getElementById("mensaje-error").innerText = "Error: el usuario o email ya está registrado.";
+        document.getElementById("mensaje-error").style.display = "block";
+        return false;
+    }
+
+    // Agrega el nuevo usuario al array
+    usuarios.push({ user, email, password: pass });
+
+    // Guarda el array actualizado en el localStorage
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    console.log("Usuario registrado correctamente:", { user, email, pass });
+    return true;
 }
 
 
 
 
-function registrarusuario(user,email,pass){
+
+
+
+
+
+// ERROR
+/*function registrarusuario(user,email,pass){
     let usuarios=JSON.parse(localStorage.getItem("usuarios")) || [];
     console.log("usuarios" + usuarios);
 
-    let usuariosRegistrados=false;
-    usuariosRegistrados=usuarios.find(u=> u.username==user);
+    let usuariosRegistrados=true;
+    usuariosRegistrados=usuarios.find(u=> u.email==email);
 
-    console.log("user: " + user + ". email: " + email + ".usuarioregistrado: " + usuariosRegistrados);
+    const usuariosRegistrado= usuarios.find(u=>u.username==username);
+    if(usuarioExistente){
+        document.getElementById("mensaje-error").innerText = "Error al registrarse, intenta nuevamente";
+    }
+
+
+    console.log("user: " + user + ". email: " + email + ".usuarioregistrado: " + usuariosRegistrado);
     if (usuariosRegistrados){
         if (usuarios.find(u=> u.username==user && u.password==pass)){
             return true
@@ -124,7 +204,11 @@ function registrarusuario(user,email,pass){
     } else {
         return false
     }
-}
+}*/
+/*------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
 
