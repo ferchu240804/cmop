@@ -8,27 +8,55 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
+    background-image: url('fondo.jpg'); /* Establecer la imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed; /* Hace que la imagen no se mueva al hacer scroll */
+    color: white; /* Asegura que el texto sea visible sobre la imagen */
 }
 
 header {
-    background: #007bff;
+    background: rgba(0, 123, 255, 0.8); /* Fondo semi-transparente para el encabezado */
     color: white;
     padding: 20px;
     text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Animación de despliegue */
+@keyframes despliegue {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Empieza arriba */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Llega a su posición final */
+    }
+}
+
+.info-text {
+    font-size: 20px;
+    color: #f4f4f4; /* Color de texto */
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    animation: despliegue 3s ease-out; /* Aplica la animación durante 3 segundos */
 }
 
 .content {
     min-height: 100vh; /* Cada sección ocupará al menos toda la altura de la ventana */
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e9ecef;
+    background-color: rgba(233, 236, 239, 0.8); /* Fondo con opacidad para contraste */
     border-bottom: 1px solid #ccc;
-}
-
-.content:nth-child(odd) {
-    background-color: #ffffff;
+    color: #333;
 }
 
 footer {
