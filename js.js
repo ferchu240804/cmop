@@ -34,6 +34,35 @@ iconClose.addEventListener("click", ()=>{
 ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* BOTON  PARA LOGEAR   */ 
+
+
+////DATOS PARA CUALQUIER DISPOSITIVO
+loginbutton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById("USER").value;
+    const password = document.getElementById("password").value;
+
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "Inicio de sesión exitoso.") {
+                alert("Bienvenido, " + data.user.username);
+                window.location.href = "inicio.html";
+            } else {
+                document.getElementById("mensaje-error").innerText = data.message;
+                document.getElementById("mensaje-error").style.display = "block";
+            }
+        })
+        .catch(error => console.error("Error:", error));
+});
+
+
+//// SOLO PARA DATOS DE MI PC
 loginbutton.addEventListener("click", (event) =>{
     event.preventDefault();
 
@@ -61,7 +90,32 @@ loginbutton.addEventListener("click", (event) =>{
 ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* BOTON PARA REGISTRARSE */
 
+////DATOS PARA CUALQUIER DISPOSITIVO
 Registrarsebutton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById("user").value;
+    const email = document.getElementById("emailR").value;
+    const password = document.getElementById("passwordR").value;
+
+    fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+});
+
+
+/////SOLO PARA DATOS DE MI PC
+
+/*Registrarsebutton.addEventListener("click", (event) => {
     event.preventDefault();
 
     const username = document.getElementById("user").value;
@@ -86,7 +140,7 @@ Registrarsebutton.addEventListener("click", (event) => {
         const mensajeError = document.getElementById("mensaje-error");
         if (mensajeError) mensajeError.style.display = "none";
     }
-});
+});*/
 
 
 
@@ -171,7 +225,6 @@ function registrarusuario(user, email, pass) {
     console.log("Usuario registrado correctamente:", { user, email, pass });
     return true;
 }
-
 
 
 

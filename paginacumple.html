@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva para mi Cumpleaños</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #countdown {
+            font-size: 48px;
+            color: #FF6347;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Falta poco para mi cumpleaños!</h1>
+    <p id="countdown"></p>
+
+    <script>
+        // Fecha de tu cumpleaños
+        const birthday = new Date("April 24, 2025 00:00:00").getTime();
+
+        // Actualizar la cuenta atrás cada segundo
+        const x = setInterval(function() {
+
+            // Fecha y hora actual
+            const now = new Date().getTime();
+
+            // Diferencia entre la fecha de cumpleaños y la fecha actual
+            const distance = birthday - now;
+
+            // Cálculo de días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar la cuenta atrás
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Si el contador llega a 0, mostrar un mensaje
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡Es tu cumpleaños!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
