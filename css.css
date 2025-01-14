@@ -1,260 +1,253 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
+    margin: 0; /* Elimina los márgenes predeterminados de todos los elementos */
+    padding: 0; /* Elimina los rellenos predeterminados de todos los elementos */
+    box-sizing: border-box; /* Establece que el tamaño de los elementos incluya el borde y el padding */
+    font-family: "poppins", sans-serif; /* Define la fuente de texto global para la página */
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 99;
+    position: fixed; /* Hace que el encabezado se quede fijo al hacer scroll */
+    top: 0; /* Posiciona el encabezado en la parte superior */
+    left: 0; /* Posiciona el encabezado al lado izquierdo */
+    width: 100%; /* El encabezado ocupa todo el ancho de la pantalla */
+    padding: 20px 100px; /* Agrega relleno dentro del encabezado */
+    display: flex; /* Utiliza Flexbox para distribuir los elementos del encabezado */
+    justify-content: space-between; /* Espacia los elementos dentro del encabezado a los extremos */
+    align-items: center; /* Centra los elementos verticalmente */
+    z-index: 99; /* Asegura que el encabezado se muestre sobre otros elementos */
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url("fondo.jpg")no-repeat;
-    background-size: cover;
-    background-position: center;
+    display: flex; /* Utiliza Flexbox para distribuir el contenido del body */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    min-height: 100vh; /* Asegura que el body tenga al menos el alto de la ventana */
+    background: url("fondo.jpg")no-repeat; /* Establece una imagen de fondo sin repetirla */
+    background-size: cover; /* Hace que la imagen de fondo cubra toda el área disponible */
+    background-position: center; /* Centra la imagen de fondo */
 }
 
-
 .logo {
-    font-size: 2em;
-    color: white;
-    user-select: none;
+    font-size: 2em; /* Aumenta el tamaño de la fuente */
+    color: white; /* Establece el color del texto en blanco */
+    user-select: none; /* Evita que el usuario seleccione el texto */
 }
 
 .navegacion a{
-    position: relative;
-    font-size: 1.1em;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 40px;
+    position: relative; /* Establece la posición relativa para el enlace */
+    font-size: 1.1em; /* Aumenta el tamaño de la fuente */
+    color: white; /* Establece el color del texto en blanco */
+    text-decoration: none; /* Elimina la decoración de texto (subrayado) */
+    font-weight: 500; /* Define el peso de la fuente */
+    margin-left: 40px; /* Agrega espacio a la izquierda de cada enlace */
 }
+
 .navegacion a::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 3px;
-    background: white;
-    border-radius: 5px;
-    transform: scaleX(0);
-    transition: transform .5s;
+    content: ""; /* Crea un pseudoelemento vacío después de cada enlace */
+    position: absolute; /* Posiciona el pseudoelemento de forma absoluta */
+    left: 0; /* Alinea el pseudoelemento al principio del enlace */
+    bottom: -6px; /* Lo posiciona ligeramente por debajo del enlace */
+    width: 100%; /* El pseudoelemento tiene el mismo ancho que el enlace */
+    height: 3px; /* Define la altura del pseudoelemento */
+    background: white; /* Establece el color de fondo en blanco */
+    border-radius: 5px; /* Redondea las esquinas del pseudoelemento */
+    transform: scaleX(0); /* Inicialmente, el pseudoelemento está oculto (escala 0) */
+    transition: transform .5s; /* Aplica una transición suave al cambio de escala */
 }
 
 .navegacion a:hover::after{
-    transform: scaleX(1);
+    transform: scaleX(1); /* Muestra el pseudoelemento cuando el enlace se pasa por encima */
 }
-
 
 .navegacion .btnLogin-popup{
-    width: 130px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid white;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: white;
-    font-weight: 500px;
-    margin-left: 40px;
-    transition: .5s;
+    width: 130px; /* Define el ancho del botón */
+    height: 50px; /* Define la altura del botón */
+    background: transparent; /* El fondo del botón es transparente */
+    border: 2px solid white; /* Define un borde blanco alrededor del botón */
+    outline: none; /* Elimina el contorno predeterminado */
+    border-radius: 6px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    font-size: 1.1em; /* Aumenta el tamaño de la fuente dentro del botón */
+    color: white; /* Define el color del texto en blanco */
+    font-weight: 500px; /* Define el peso de la fuente */
+    margin-left: 40px; /* Agrega espacio a la izquierda del botón */
+    transition: .5s; /* Aplica una transición suave para el cambio de estilos */
 }
 
-
 .navegacion .btnLogin-popup:hover {
-    background: white;
-    color: #162938;
+    background: white; /* Cambia el fondo del botón a blanco cuando se pasa por encima */
+    color: #162938; /* Cambia el color del texto a un tono oscuro */
 }
 
 .cuadro {
-    position: relative;
-    width: 400px;
-    height: 440px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
-    transform: scale(0);
-   transition: transform .5s ease, height .2s ease;
+    position: relative; /* Posiciona el contenedor de forma relativa */
+    width: 400px; /* Define el ancho del cuadro */
+    height: 440px; /* Define la altura del cuadro */
+    background: transparent; /* El fondo es transparente */
+    border: 2px solid rgba(255, 255, 255, .5); /* Establece un borde semitransparente */
+    border-radius: 20px; /* Redondea las esquinas del cuadro */
+    backdrop-filter: blur(20px); /* Aplica un filtro de desenfoque de fondo */
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5); /* Aplica una sombra difusa alrededor del cuadro */
+    display: flex; /* Utiliza Flexbox para distribuir el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    overflow: hidden; /* Oculta el contenido desbordante */
+    transform: scale(0); /* Inicialmente, el cuadro está oculto por una escala de 0 */
+    transition: transform .5s ease, height .2s ease; /* Aplica una transición suave a la escala y altura */
 }
 
 .cuadro.active-popup{
-    transform: scale(1);
+    transform: scale(1); /* Muestra el cuadro con una escala de 1 cuando se activa */
 }
 
-
 .cuadro.active{
-    height: 520px;
+    height: 520px; /* Aumenta la altura del cuadro cuando está activo */
 }
 
 .cuadro .form-box {
-    width: 100%;
-    padding: 40px;
+    width: 100%; /* Hace que el formulario ocupe todo el ancho disponible */
+    padding: 40px; /* Agrega relleno al formulario */
 }
 
 .cuadro .form-box.login{
-   transition: transform .18s ease;
-   transform: translateX(0);
+   transition: transform .18s ease; /* Aplica una transición suave al formulario de inicio de sesión */
+   transform: translateX(0); /* Establece la posición inicial del formulario */
 }
 
 .cuadro.active .form-box.login{
-    transition: none;
-    transform: translateX(-400px);
+    transition: none; /* Elimina la transición cuando el formulario de login está activo */
+    transform: translateX(-400px); /* Mueve el formulario hacia la izquierda cuando se activa el estado "active" */
 }
-
 
 .cuadro .form-box.register{
-    position: absolute;
-    transition: none;
-    transform: translateX(400px);
+    position: absolute; /* Posiciona el formulario de registro de forma absoluta */
+    transition: none; /* Elimina la transición inicial */
+    transform: translateX(400px); /* Posiciona el formulario fuera de la pantalla a la derecha */
 }
 
-
-
 .cuadro.active .form-box.register{
-    transition: transform .18s ease;
-    transform: translateX(0);
- }
+    transition: transform .18s ease; /* Aplica una transición suave cuando se activa el formulario de registro */
+    transform: translateX(0); /* Mueve el formulario de registro al centro cuando se activa */
+}
 
 .cuadro .icon-close{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45px;
-    height: 45px;
-    background: #162938;
-    font-size: 2em;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    z-index: 1;
+    position: absolute; /* Posiciona el icono de cierre de forma absoluta */
+    top: 0; /* Lo coloca en la parte superior del cuadro */
+    right: 0; /* Lo coloca en el lado derecho del cuadro */
+    width: 45px; /* Define el tamaño del icono */
+    height: 45px; /* Define el tamaño del icono */
+    background: #162938; /* Establece un fondo oscuro para el icono */
+    font-size: 2em; /* Aumenta el tamaño del icono */
+    color: white; /* Establece el color del icono en blanco */
+    display: flex; /* Utiliza Flexbox para centrar el icono */
+    justify-content: center; /* Centra el icono horizontalmente */
+    align-items: center; /* Centra el icono verticalmente */
+    border-bottom-left-radius: 20px; /* Redondea la esquina inferior izquierda */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el icono */
+    z-index: 1; /* Asegura que el icono se muestre sobre otros elementos */
 }
 
 .form-box h2{
-    font-size: 2em;
-    color: #162938;
-    text-align: center;
+    font-size: 2em; /* Aumenta el tamaño del texto del encabezado */
+    color: #162938; /* Establece el color del texto */
+    text-align: center; /* Centra el texto del encabezado */
 }
 
 .input-box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
+    position: relative; /* Posiciona el contenedor de entrada de forma relativa */
+    width: 100%; /* El input ocupa todo el ancho disponible */
+    height: 50px; /* Define la altura del input */
+    border-bottom: 2px solid #162938; /* Añade un borde inferior en color oscuro */
+    margin: 30px 0; /* Agrega márgenes arriba y abajo del input */
 }
 
 .input-box label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #162938;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s;
+    position: absolute; /* Posiciona la etiqueta de forma absoluta dentro del contenedor */
+    top: 50%; /* Centra verticalmente la etiqueta */
+    left: 5px; /* Coloca la etiqueta en el borde izquierdo */
+    transform: translateY(-50%); /* Ajusta la posición de la etiqueta para centrarla */
+    font-size: 1em; /* Define el tamaño de la fuente */
+    color: #162938; /* Establece el color del texto de la etiqueta */
+    font-weight: 500; /* Define el peso de la fuente */
+    pointer-events: none; /* Evita que la etiqueta sea interactuable */
+    transition: .5s; /* Aplica una transición suave */
 }
 
 .input-box input:focus~label,
 .input-box input:valid~label{
-    top: -5px;
+    top: -5px; /* Mueve la etiqueta hacia arriba cuando el input está enfocado o es válido */
 }
 
 .input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color: #162938;
-    font-weight: 600;
-    padding:  0 35px 0 5px;
+    width: 100%; /* El input ocupa todo el ancho disponible */
+    height: 100%; /* El input ocupa toda la altura disponible */
+    background: transparent; /* El fondo es transparente */
+    border: none; /* Elimina los bordes predeterminados */
+    outline: none; /* Elimina el contorno predeterminado */
+    font-size: 1em; /* Define el tamaño de la fuente */
+    color: #162938; /* Establece el color del texto en el input */
+    font-weight: 600; /* Establece el peso de la fuente */
+    padding: 0 35px 0 5px; /* Añade relleno a los lados del input */
 }
 
 .input-box .icon{
-    position: absolute;
-    right: 8px;
-    font-size: 1.2em;
-    color: #162938;
-    line-height: 57px;
-
+    position: absolute; /* Posiciona el icono dentro del input */
+    right: 8px; /* Coloca el icono a la derecha */
+    font-size: 1.2em; /* Aumenta el tamaño del icono */
+    color: #162938; /* Establece el color del icono */
+    line-height: 57px; /* Ajusta la altura de línea para alinear el icono */
 }
 
 .rememver-forgot{
-    font-size: .9em;
-    color: #162938;
-    font-weight: 500;
-    margin: -15px 0 15px;
-    display:flex;
-    justify-content: space-between;
+    font-size: .9em; /* Define un tamaño de fuente más pequeño */
+    color: #162938; /* Establece el color del texto */
+    font-weight: 500; /* Define el peso de la fuente */
+    margin: -15px 0 15px; /* Agrega márgenes en la parte superior e inferior */
+    display: flex; /* Utiliza Flexbox para distribuir los elementos */
+    justify-content: space-between; /* Espacia los elementos a los extremos */
+}
 
-}.rememver-forgot label input{
-    accent-color: #162938;
-    margin-right: 3px;
+.rememver-forgot label input{
+    accent-color: #162938; /* Establece el color de acento del checkbox */
+    margin-right: 3px; /* Añade un pequeño margen a la derecha del checkbox */
 }
 
 .rememver-forgot a{
-    color: #162938;
-    text-decoration: none;
+    color: #162938; /* Establece el color del enlace */
+    text-decoration: none; /* Elimina el subrayado del enlace */
 }
 
 .rememver-forgot a:hover{
-    text-decoration: underline;
+    text-decoration: underline; /* Añade subrayado cuando se pasa el ratón sobre el enlace */
 }
-.btn{
-    width: 100%;
-    height: 45px;
-    background: #162938;
-    border: none;
-    border-radius: 6px;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    color: white;
-    font-weight: 500;
 
+.btn{
+    width: 100%; /* El botón ocupa todo el ancho disponible */
+    height: 45px; /* Define la altura del botón */
+    background: #162938; /* Establece un fondo oscuro para el botón */
+    border: none; /* Elimina los bordes del botón */
+    border-radius: 6px; /* Redondea las esquinas del botón */
+    outline: none; /* Elimina el contorno predeterminado */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    font-size: 1em; /* Define el tamaño de la fuente dentro del botón */
+    color: white; /* Define el color del texto en blanco */
+    font-weight: 500; /* Define el peso de la fuente */
 }
 
 .login-register{
-    font-size: .9em;
-    color: #162938;
-    text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px
-
+    font-size: .9em; /* Establece un tamaño de fuente más pequeño */
+    color: #162938; /* Establece el color del texto */
+    text-align: center; /* Centra el texto */
+    font-weight: 500; /* Define el peso de la fuente */
+    margin: 25px 0 10px; /* Añade márgenes arriba y abajo del texto */
 }
 
 .login-register p a{
-    color: #162938;
-    text-decoration: none;
-    font-weight: 600;
+    color: #162938; /* Establece el color del enlace */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: 600; /* Define el peso de la fuente */
 }
 
 .login-register p a:hover{
-    text-decoration: underline;
+    text-decoration: underline; /* Añade subrayado cuando se pasa el ratón sobre el enlace */
 }

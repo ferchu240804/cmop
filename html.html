@@ -1,91 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Define el tipo de documento como HTML -->
+<html lang="en"> <!-- Inicia el documento HTML con el lenguaje en inglés -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate</title>
-    <link rel="stylesheet" href="css.css" defer>
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura el diseño para adaptarse a dispositivos móviles -->
+    <title>Registrate</title> <!-- Título de la página -->
+    <link rel="stylesheet" href="css.css" defer> <!-- Enlace al archivo CSS externo -->
 </head>
 <body>
 
-    <header>
-        <h2 class="logo">logo</h2>
-        <nav class="navegacion">
-            <a href="sabermas.html">Saber mas</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="contactos.html">Contactos</a>
-            <a href="inicio.html">Inicio</a>
-            <button class="btnLogin-popup">Login</button>
-            <div id="mensaje-error" style="color: red; display: none;"></div>
-
+    <header> <!-- Sección de encabezado de la página -->
+        <h2 class="logo">login</h2> <!-- Título o logo del sitio -->
+        <nav class="navegacion"> <!-- Menú de navegación -->
+            <a href="sabermas.html">Saber mas</a> <!-- Enlace a la página "Saber más" -->
+            <a href="servicios.html">Servicios</a> <!-- Enlace a la página "Servicios" -->
+            <a href="contactos.html">Contactos</a> <!-- Enlace a la página "Contactos" -->
+            <a href="inicio.html">Inicio</a> <!-- Enlace a la página "Inicio" -->
+            <button class="btnLogin-popup">Login</button> <!-- Botón para abrir el formulario de inicio de sesión -->
+            <div id="mensaje-error" style="color: red; display: none;"></div> <!-- Div para mostrar mensajes de error -->
         </nav>
     </header>
-    <form id="loginform">
-    <div class="cuadro">
-        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
 
-        <div class="form-box login">
-            <h2>Login</h2>
-            <form action="#">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="text" required id="USER">
-                    <label>Username</label>
+    <form id="loginform"> <!-- Formulario principal de login -->
+    <div class="cuadro"> <!-- Contenedor principal para los formularios -->
+        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span> <!-- Icono para cerrar el formulario -->
+
+        <div class="form-box login"> <!-- Contenedor específico para el formulario de inicio de sesión -->
+            <h2>Login</h2> <!-- Título del formulario de inicio de sesión -->
+            <form action="#"> <!-- Inicia un formulario que no envía datos a ningún servidor -->
+                <div class="input-box"> <!-- Contenedor para el campo de usuario -->
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span> <!-- Icono del campo de usuario -->
+                    <input type="text" required id="USER"> <!-- Campo de texto para el nombre de usuario -->
+                    <label>Username</label> <!-- Etiqueta para el campo de texto -->
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required id="password">
-                    <label>Contraseña</label>
+                <div class="input-box"> <!-- Contenedor para el campo de contraseña -->
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span> <!-- Icono del campo de contraseña -->
+                    <input type="password" required id="password"> <!-- Campo para la contraseña -->
+                    <label>Contraseña</label> <!-- Etiqueta para el campo de contraseña -->
                 </div>
-                <div class="rememver-forgot">
-                    <label><input type="checkbox">Recuerdamelo</label>
-                    <a href="#">Olvidaste tu contraseña?</a>
+                <div class="rememver-forgot"> <!-- Contenedor para opciones adicionales -->
+                    <label><input type="checkbox">Recuerdamelo</label> <!-- Checkbox para recordar al usuario -->
+                    <a href="#">Olvidaste tu contraseña?</a> <!-- Enlace para recuperar contraseña -->
                 </div>
-                <button type="submit" class="btn">Login</button>
-                <div class="login-register">
+                <button type="submit" class="btn">Login</button> <!-- Botón de inicio de sesión -->
+                <div class="login-register"> <!-- Enlace a la página de registro -->
                     <p>No tienes una cuenta?</p>
-                    <p><a href="#" class="register-link">Registrate</a></p>
-
+                    <p><a href="#" class="register-link">Registrate</a></p> <!-- Enlace a la sección de registro -->
                 </div>
             </form>
         </div>
 
-
-        <div class="form-box register">
-            <h2>Registrarse</h2>
-            <form action="#">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="text" required id="user">
-                    <label>Username</label>
+        <div class="form-box register"> <!-- Contenedor específico para el formulario de registro -->
+            <h2>Registrarse</h2> <!-- Título del formulario de registro -->
+            <form action="#"> <!-- Inicia un formulario que no envía datos a ningún servidor -->
+                <div class="input-box"> <!-- Contenedor para el campo de usuario -->
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span> <!-- Icono del campo de usuario -->
+                    <input type="text" required id="user"> <!-- Campo de texto para el nombre de usuario -->
+                    <label>Username</label> <!-- Etiqueta para el campo de texto -->
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" required id="emailR">
-                    <label>Email</label>
+                <div class="input-box"> <!-- Contenedor para el campo de email -->
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span> <!-- Icono del campo de email -->
+                    <input type="email" required id="emailR"> <!-- Campo para el correo electrónico -->
+                    <label>Email</label> <!-- Etiqueta para el campo de email -->
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required id="passwordR">
-                    <label>Contraseña</label>
+                <div class="input-box"> <!-- Contenedor para el campo de contraseña -->
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span> <!-- Icono del campo de contraseña -->
+                    <input type="password" required id="passwordR"> <!-- Campo para la contraseña -->
+                    <label>Contraseña</label> <!-- Etiqueta para el campo de contraseña -->
                 </div>
-                <div class="rememver-forgot">
-                    <label><input type="checkbox">Acepto los términos y condiciones</label>
+                <div class="rememver-forgot"> <!-- Contenedor para opciones adicionales -->
+                    <label><input type="checkbox">Acepto los términos y condiciones</label> <!-- Checkbox para aceptar los términos -->
                 </div>
-                <button type="submit" class="btn" id="login-register">Registrarse</button>
-                <div class="login-register">
+                <button type="submit" class="btn" id="login-register">Registrarse</button> <!-- Botón de registro -->
+                <div class="login-register"> <!-- Enlace a la página de inicio de sesión -->
                     <p>Ya tienes una cuenta?</p>
-                    <p><a href="#" class="login-link">Inicia sesión</a></p>
+                    <p><a href="#" class="login-link">Inicia sesión</a></p> <!-- Enlace a la sección de login -->
                 </div>
             </form>
         </div>
-        
     </div>
 
-
-    <script src="js.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
+    <script src="js.js" defer></script> <!-- Archivo JS externo con defer para cargarlo después del HTML -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <!-- Biblioteca de íconos Ionicons (módulo) -->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> <!-- Biblioteca de íconos Ionicons (fallback para navegadores antiguos) -->
 </body>
 </html>
