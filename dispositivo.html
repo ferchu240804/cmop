@@ -1,0 +1,31 @@
+<!DOCTYPE html>  <!-- Define el tipo de documento como HTML5, asegurando que el navegador lo interprete correctamente como una página HTML. -->
+<html lang="en">  <!-- Inicia el documento HTML y establece el idioma principal de la página como inglés (en). -->
+    <head>  <!-- Inicia la sección del encabezado del documento donde se incluyen metadatos y enlaces a recursos externos. -->
+        <meta charset="UTF-8">  <!-- Establece la codificación de caracteres a UTF-8, que es una codificación de caracteres común y permite usar caracteres especiales. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Hace que la página sea responsiva, ajustando el contenido al ancho del dispositivo y escalando el contenido a un valor inicial de 1.0. -->
+        <title>Mercado Virtual</title>  <!-- Define el título de la página que se muestra en la pestaña del navegador. -->
+        <link rel="stylesheet" href="dispositivo.css">  <!-- Vincula el archivo de estilo externo "compras.css" para dar formato a la página HTML. -->
+        <!-- Carga el script para los íconos de Ionicons -->
+        <script src="https://cdn.jsdelivr.net/npm/ionicons@6.0.0/dist/ionicons.js"></script>
+    </head>  <!-- Finaliza la sección del encabezado. -->
+    <body>  <!-- Inicia el cuerpo del documento donde se encuentra el contenido visible de la página. -->
+        <header>  <!-- Define la sección de encabezado de la página, comúnmente usada para colocar el título y navegación. -->
+            <h1>Mercado Virtual</h1>  <!-- Título principal de la página, que se muestra en la parte superior de la interfaz con un tamaño grande (h1). -->
+            <input type="text" id="searchBar" placeholder="Buscar productos...">  <!-- Campo de entrada de texto donde los usuarios pueden escribir para buscar productos en el mercado. El atributo placeholder muestra un texto sugerido cuando el campo está vacío. -->
+            <p id="saldo-restante"> Mis Productos</p><!-- Saldo Inicial-->
+        </header>  <!-- Finaliza la sección del encabezado. -->
+  
+        <main id="productContainer"></main>  <!-- Contenedor principal (vacío por ahora) donde se mostrarán los productos. El id "productContainer" se usará en el archivo JavaScript para referenciar y manipular este contenedor. -->
+  
+        <footer>  <!-- Define el pie de página donde se incluyen elementos de información secundaria, como derechos de autor. -->
+            <p>&copy; Mi WhatsApp para mas info.</p>  <!-- Muestra el texto de derechos de autor, con el símbolo &copy; para el copyright y el año 2025. -->
+            <!-- Finaliza la sección del pie de página. -->
+            <a href="https://wa.me/595981919031?text=¡Buenas!%20le%20escribo%20para%20consultar%20por%20tal%20producto😀" target="_blank" class="icon">
+                <!-- Ícono de WhatsApp -->
+                <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+        </footer>
+
+        <script src="dispositivo.js"></script>  <!-- Vincula el archivo JavaScript "compras.js", que contendrá la funcionalidad de la página (como la lógica de búsqueda de productos). -->
+    </body>  <!-- Finaliza el cuerpo del documento. -->
+</html>  <!-- Finaliza el documento HTML. -->

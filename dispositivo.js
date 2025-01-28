@@ -1,5 +1,37 @@
 // Lista de productos disponibles, cada producto es un objeto con varias propiedades.
-    const products = fetch("http:/localhost:4000/productos")
+const products = [
+    {
+        name: "Iphone XR", // Nombre del producto
+        price: 259.99, // Precio del producto
+        description: "", // Descripción del producto
+        image: "iphone XR.png" // Ruta de la imagen del producto
+    },
+    {
+        name: "", 
+        price: 3.50, 
+        description: "",
+        image: "" 
+    },
+    {
+        name: "", 
+        price: 6.99, 
+        description: "", 
+        image: "" 
+    },
+    {
+        name: "", 
+        price: 5.49, 
+        description: "", 
+        image: "" 
+    },
+    {
+        name: "", 
+        price: 6.50, 
+        description: "", 
+        image: "" 
+    },
+
+];
 
 // Obtener el saldo inicial del usuario desde sessionStorage. Si no existe, asignar un valor predeterminado de 10,000,000.
 let saldoRestante = parseFloat(sessionStorage.getItem('saldoRestante')) || 10000000;

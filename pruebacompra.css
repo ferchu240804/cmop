@@ -1,0 +1,111 @@
+/* Aplica un estilo general para evitar márgenes y padding predefinidos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que los bordes se incluyan en las dimensiones totales */
+}
+
+/* Estilo base del cuerpo de la página */
+body {
+    font-family: 'Roboto', sans-serif; /* Fuente moderna y legible */
+    line-height: 1.6; /* Espaciado entre líneas para mayor legibilidad */
+    background-image: url('fondo.jpg'); /* Imagen de fondo */
+    background-size: cover; /* La imagen cubre toda la pantalla */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+    color: #f4f4f4; /* Color claro para el texto */
+}
+
+/* Estilo del encabezado */
+header {
+    background: rgba(0, 123, 255, 0.8); /* Fondo azul con transparencia */
+    color: white; /* Texto en blanco para contraste */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto horizontalmente */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra en el texto */
+}
+
+header h1 {
+    font-size: 2.5rem; /* Tamaño grande para el título */
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.info-text {
+    font-size: 1.2rem; /* Tamaño mediano para el texto informativo */
+    margin-top: 10px; /* Espacio encima del texto */
+    animation: fade-in 3s ease-in-out; /* Aplica una animación de desvanecimiento */
+}
+
+/* Animación para el texto del encabezado */
+@keyframes fade-in {
+    from {
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        opacity: 1; /* Aparece completamente */
+    }
+}
+
+/* Estilo general de las secciones de contenido */
+.content {
+    display: flex; /* Usa un modelo de caja flexible */
+    justify-content: center; /* Centra horizontalmente los elementos hijos */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+    padding: 40px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo de las tarjetas */
+.card {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #333; /* Color oscuro para el texto */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Sube ligeramente la tarjeta al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensifica la sombra */
+}
+
+.card img {
+    width: 300px; /* Ancho fijo de la imagen */
+    height: auto; /* Mantiene la proporción original */
+    border-radius: 10px; /* Bordes redondeados en la imagen */
+    margin-bottom: 15px; /* Espacio debajo de la imagen */
+    transition: transform 0.3s ease; /* Transición suave al cambiar tamaño */
+}
+
+.card img:hover {
+    transform: scale(1.05); /* Agranda ligeramente la imagen al pasar el mouse */
+}
+
+.card p {
+    font-size: 1.5rem; /* Texto grande y llamativo */
+    font-weight: bold; /* Negrita */
+    margin-top: 10px; /* Espacio sobre el texto */
+}
+
+/* Estilo del pie de página */
+footer {
+    background: #343a40; /* Fondo oscuro */
+    color: white; /* Texto en blanco */
+    text-align: center; /* Centra el contenido */
+    padding: 20px; /* Espaciado interno */
+    margin-top: 20px; /* Espacio superior */
+}
+
+footer .icon {
+    font-size: 40px; /* Tamaño grande para el ícono */
+    color: #25D366; /* Color característico de WhatsApp */
+    margin-top: 10px; /* Espacio superior */
+    cursor: pointer; /* Cambia el cursor a mano */
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+footer .icon:hover {
+    transform: scale(1.2); /* Agranda el ícono al pasar el mouse */
+}

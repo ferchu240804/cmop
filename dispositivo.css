@@ -1,0 +1,105 @@
+/* Estilo general */
+body {  /* Define los estilos aplicados al elemento <body>, que afecta todo el contenido visible de la página. */
+    font-family: 'Arial', sans-serif;  /* Establece la fuente principal de la página como 'Arial', y en caso de no estar disponible, se utilizará una fuente sans-serif. */
+    margin: 0;  /* Elimina el margen por defecto alrededor del contenido de la página. */
+    padding: 0;  /* Elimina el padding por defecto alrededor del contenido de la página. */
+    background-color: #f9f9f9;  /* Establece un color de fondo gris claro para toda la página. */
+    color: #333;  /* Establece el color del texto principal como un gris oscuro (#333). */
+}
+
+/* Encabezado */
+header {  /* Define los estilos para el elemento <header>, que generalmente contiene la parte superior de la página (como el título y la barra de búsqueda). */
+    background-color: #4CAF50;  /* Establece el color de fondo del encabezado como un verde (#4CAF50). */
+    color: white;  /* Establece el color del texto en el encabezado como blanco. */
+    padding: 20px;  /* Aplica un padding de 20px alrededor del contenido del encabezado. */
+    text-align: center;  /* Centra el texto dentro del encabezado. */
+}
+
+header h1 {  /* Define los estilos para el elemento <h1> dentro del encabezado. */
+    margin: 0;  /* Elimina cualquier margen alrededor del título. */
+    font-size: 2rem;  /* Establece el tamaño de la fuente del título en 2 rem (relativo al tamaño de la fuente base del navegador). */
+}
+
+header input {  /* Define los estilos para el campo de entrada de texto en el encabezado (barra de búsqueda). */
+    margin-top: 10px;  /* Aplica un margen superior de 10px entre el título y la barra de búsqueda. */
+    padding: 10px;  /* Aplica un padding de 10px dentro del campo de texto para crear espacio alrededor del contenido. */
+    width: 80%;  /* Establece el ancho del campo de búsqueda al 80% del ancho de su contenedor. */
+    max-width: 500px;  /* Establece un ancho máximo de 500px para el campo de búsqueda, para que no se haga más grande. */
+    font-size: 1rem;  /* Establece el tamaño de la fuente en el campo de búsqueda a 1 rem. */
+    border: none;  /* Elimina cualquier borde predeterminado alrededor del campo de búsqueda. */
+    border-radius: 5px;  /* Aplica bordes redondeados de 5px al campo de búsqueda. */
+    outline: none;  /* Elimina el contorno predeterminado que aparece cuando se hace clic en el campo de texto. */
+}
+
+/* Contenedor principal */
+main {  /* Define los estilos para el contenedor principal de la página, el cual agrupa los productos. */
+    display: flex;  /* Utiliza Flexbox para organizar los elementos dentro del contenedor. */
+    flex-wrap: wrap;  /* Permite que los elementos se envuelvan en varias filas si no caben en una sola fila. */
+    justify-content: center;  /* Centra los productos dentro del contenedor. */
+    padding: 20px;  /* Aplica un padding de 20px alrededor del contenedor. */
+    gap: 20px;  /* Establece un espacio de 20px entre los productos dentro del contenedor. */
+}
+
+#saldo-restante {
+    font-size: 1.2rem;  /* Tamaño de la fuente */
+    font-weight: bold;  /* Negrita */
+    margin-top: 10px;  /* Espaciado superior */
+    color: #333;  /* Color del texto */
+    background-color: #f2f2f2;  /* Fondo claro */
+    padding: 10px;  /* Relleno */
+    border: 1px solid #ccc;  /* Borde */
+    border-radius: 5px;  /* Bordes redondeados */
+    text-align: center;  /* Centrado del texto */
+    max-width: 300px;  /* Ancho máximo */
+    margin-left: auto;  /* Centrado horizontal */
+    margin-right: auto; /* Centrado horizontal */
+}
+
+
+
+/* Tarjeta de producto */
+.product-card {  /* Define los estilos para la tarjeta de cada producto. */
+    background-color: white;  /* Establece un fondo blanco para la tarjeta del producto. */
+    border-radius: 10px;  /* Aplica bordes redondeados de 10px a la tarjeta. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Aplica una sombra suave de 4px de desplazamiento vertical y 6px de desplazamiento horizontal a la tarjeta. */
+    overflow: hidden;  /* Asegura que el contenido de la tarjeta no se desborde fuera de los bordes redondeados. */
+    width: 250px;  /* Establece el ancho de cada tarjeta en 250px. */
+    transition: transform 0.2s ease-in-out;  /* Establece una transición de 0.2 segundos para aplicar un efecto de transformación (por ejemplo, escala) con una animación suave. */
+}
+
+.product-card:hover {  /* Define los estilos cuando el usuario pasa el cursor sobre la tarjeta del producto (efecto hover). */
+    transform: scale(1.05);  /* Aumenta el tamaño de la tarjeta en un 5% al pasar el cursor sobre ella. */
+}
+
+.product-card img {  /* Define los estilos para las imágenes dentro de las tarjetas de producto. */
+    width: 100%;  /* Establece que la imagen ocupe el 100% del ancho de la tarjeta. */
+    height: 150px;  /* Establece la altura de la imagen a 150px. */
+    object-fit: cover;  /* Asegura que la imagen cubra el área asignada de manera proporcional, recortando si es necesario. */
+}
+
+.product-card h3 {  /* Define los estilos para los encabezados dentro de las tarjetas de producto (nombre del producto). */
+    margin: 15px 10px 5px;  /* Aplica márgenes de 15px en la parte superior, 10px en los lados y 5px en la parte inferior del encabezado. */
+    font-size: 1.2rem;  /* Establece el tamaño de la fuente en 1.2 rem (relativo a la fuente base). */
+}
+
+.product-card p {  /* Define los estilos para los párrafos dentro de las tarjetas de producto (descripción). */
+    margin: 5px 10px;  /* Aplica márgenes de 5px en la parte superior e inferior y 10px a los lados. */
+    font-size: 0.9rem;  /* Establece el tamaño de la fuente en 0.9 rem (más pequeño que el tamaño base). */
+    color: #666;  /* Establece el color del texto en un gris claro (#666). */
+}
+
+.product-card .price {  /* Define los estilos para el elemento con la clase 'price' dentro de las tarjetas de producto (el precio). */
+    margin: 10px;  /* Aplica márgenes de 10px alrededor del precio. */
+    font-weight: bold;  /* Establece el peso de la fuente como negrita. */
+    font-size: 1rem;  /* Establece el tamaño de la fuente en 1 rem (tamaño estándar). */
+    color: #4CAF50;  /* Establece el color del texto del precio a un verde (#4CAF50). */
+}
+
+/* Pie de página */
+footer {  /* Define los estilos para el elemento <footer>, que contiene el pie de página de la página. */
+    text-align: center;  /* Centra el texto dentro del pie de página. */
+    padding: 10px;  /* Aplica un padding de 10px dentro del pie de página. */
+    background-color: #4CAF50;  /* Establece el color de fondo del pie de página a verde (#4CAF50). */
+    color: white;  /* Establece el color del texto en blanco. */
+    margin-top: 20px;  /* Aplica un margen superior de 20px para separar el pie de página del contenido principal. */
+}

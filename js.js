@@ -33,7 +33,8 @@ iconClose.addEventListener("click", () => {
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* BOTON PARA LOGEAR */
+
+/* BOTON PARA LOGEAR 
 
 // Solo para datos de la PC local. Maneja el evento de clic para el botón de login.
 loginbutton.addEventListener("click", (event) => {
@@ -44,7 +45,7 @@ loginbutton.addEventListener("click", (event) => {
 
     console.log("USERNAME: " + user + ". PASSWORD: " + password);  // Muestra en consola el usuario y la contraseña ingresados.
 
-    flaglogin = iniciarSesion(user, password);  // Llama a la función iniciarSesion para verificar si las credenciales son correctas.
+    flaglogin = verificarLogin(user, password);  // Llama a la función iniciarSesion para verificar si las credenciales son correctas.
     
     if (flaglogin == true) {
         window.location.href = "inicio.html";  // Si el login es exitoso, redirige a la página "inicio.html".
@@ -60,7 +61,7 @@ loginbutton.addEventListener("click", (event) => {
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* BOTON PARA REGISTRARSE */
+/* BOTON PARA REGISTRARSE 
 
 // Solo para datos de la PC local. Maneja el evento de clic para el botón de registro.
 Registrarsebutton.addEventListener("click", (event) => {
@@ -84,8 +85,7 @@ Registrarsebutton.addEventListener("click", (event) => {
         formRegistro.appendChild(mensaje);  // Añade el mensaje al formulario de registro.
 
         // Asegúrate de ocultar cualquier mensaje de error previo.
-        const mensajeError = document.getElementById("mensaje-error");
-        if (mensajeError) mensajeError.style.display = "none";  // Oculta el mensaje de error si existe.
+        document.getElementById("mensaje-error").style.display = "none"; 
     }
 });
 
@@ -94,46 +94,162 @@ Registrarsebutton.addEventListener("click", (event) => {
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* FUNCION INICIAR SESION */
+/* REGISTRO LOCAL 
 
-// Esta función verifica si el usuario existe y si las credenciales son correctas.
-function iniciarSesion(user, pass) {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];  // Obtiene la lista de usuarios desde el localStorage o un array vacío si no hay usuarios.
-
-    console.log("Usuarios registrados:", usuarios);  // Muestra en consola los usuarios registrados.
-
-    // Busca un usuario que coincida con el nombre de usuario y la contraseña proporcionados.
-    let usuarioExistente = usuarios.find(u => u.user === user && u.password === pass);
-
-    return usuarioExistente ? true : false;  // Si el usuario existe y la contraseña es correcta, devuelve true. Sino, devuelve false.
-}
-
-/*------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------ */
-
-/* FUNCION REGISTRARSE */
-
-// Esta función registra un nuevo usuario si el nombre de usuario o el email no están ya registrados.
+// Esta función maneja el registro de nuevos usuarios, guardándolos en el almacenamiento local (localStorage).
 function registrarusuario(user, email, pass) {
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];  // Obtiene la lista de usuarios desde el localStorage o un array vacío si no hay usuarios.
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];  // Obtiene los usuarios del almacenamiento local o una lista vacía.
 
-    // Verifica si ya existe un usuario con el mismo email o nombre de usuario.
-    let usuarioExistente = usuarios.find(u => u.email === email || u.user === user);
+    let usuarioExistente = usuarios.find(u => u.email === email || u.user === user);  // Verifica si el usuario o el email ya existen.
 
-    if (usuarioExistente) {
-        // Si el usuario o el email ya están registrados, muestra un mensaje de error.
-        document.getElementById("mensaje-error").innerText = "Error: el usuario o email ya está registrado.";
+    if (usuarioExistente) {  // Si el usuario ya existe, muestra un mensaje de error.
+        document.getElementById("mensaje-error").innerText = "Error: el usuario o email ya está registrado.";  // Establece el mensaje de error.
         document.getElementById("mensaje-error").style.display = "block";  // Muestra el mensaje de error.
-        return false;  // Devuelve false para indicar que el registro no fue exitoso.
+        return false;  // Impide el registro si el usuario ya existe.
     }
 
-    // Si el usuario no existe, agrega al nuevo usuario al array de usuarios.
-    usuarios.push({ user, email, password: pass });
+    // Enviar los datos al servidor usando fetch
+    fetch('http://localhost:3000/registrar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'  // Asegúrate de que el contenido enviado sea de tipo JSON.
+        },
+        body: JSON.stringify({ Username: user, Email: email, Password: pass })  // Los datos a enviar como JSON.
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {  // Si la respuesta del servidor es exitosa, muestra un mensaje de éxito.
+            const mensaje = document.createElement("div");
+            mensaje.id = "mensaje-registro";
+            mensaje.style.color = "green";
+            mensaje.style.marginTop = "10px";
+            mensaje.textContent = "Cuenta registrada, ya puede iniciar sesión.";
 
-    // Guarda el array actualizado de usuarios en el localStorage.
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    console.log("Usuario registrado correctamente:", { user, email, pass });  // Muestra en consola que el usuario fue registrado correctamente.
-    return true;  // Devuelve true para indicar que el registro fue exitoso.
+            const formRegistro = document.querySelector(".form-box.register");
+            formRegistro.appendChild(mensaje);
+        } else {
+            // Si hubo algún error en el servidor, muestra un mensaje de error.
+            document.getElementById("mensaje-error").innerText = "Error al registrar el usuario. Intenta de nuevo.";
+            document.getElementById("mensaje-error").style.display = "block";
+        }
+    })
+    .catch(error => {
+        // Si ocurre un error en la solicitud, muestra un mensaje de error.
+        console.error("Error en la solicitud:", error);
+        document.getElementById("mensaje-error").innerText = "Error en la conexión con el servidor.";
+        document.getElementById("mensaje-error").style.display = "block";
+    });
+
+    // Si todo está bien, devuelve true para indicar que el registro fue exitoso.
+    return true;
 }
+
+
+// BOTON PARA LOGEAR
+
+loginbutton.addEventListener("click", (event) => {
+    event.preventDefault();  // Previene la acción predeterminada del botón, que sería enviar el formulario.
+
+    const user = document.getElementById("USER").value;  // Obtiene el valor del campo de usuario del formulario de login.
+    const password = document.getElementById("password").value;  // Obtiene el valor del campo de contraseña del formulario de login.
+
+    console.log("USERNAME: " + user + ". PASSWORD: " + password);  // Muestra en consola el usuario y la contraseña ingresados.
+
+    // Verificar si el usuario está registrado
+    const loginExitoso = verificarLogin(user, password);  // Llama a la función verificarLogin para comprobar las credenciales.
+    
+    if (loginExitoso) {
+        window.location.href = "inicio.html";  // Si el login es exitoso, redirige a la página "inicio.html".
+    } else {
+        // Muestra un mensaje de error si las credenciales son incorrectas.
+        document.getElementById("mensaje-error").innerText = "Usuario o Contraseña incorrecta";  // Establece el mensaje de error.
+        document.getElementById("mensaje-error").style.display = "block";  // Muestra el mensaje de error.
+    }
+});
+
+// Función para verificar si el usuario y la contraseña son correctos
+function verificarLogin(username, password) {
+    // Obtener los usuarios del almacenamiento local (o de una base de datos si es necesario)
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];  // Obtiene los usuarios del almacenamiento local o una lista vacía.
+
+    // Buscar si el usuario ingresado existe en la lista de usuarios
+    const usuarioEncontrado = usuarios.find(u => u.user === username && u.password === password);
+
+    // Si el usuario fue encontrado, retorna true; si no, retorna false
+    return usuarioEncontrado ? true : false;
+}
+
+// FUNCION PARA INICIAR SESIÓN
+loginbutton.addEventListener("click", (event) => {
+    event.preventDefault();  // Previene la acción predeterminada del botón, que sería enviar el formulario.
+
+    const user = document.getElementById("USER").value;  // Obtiene el valor del campo de usuario del formulario de login.
+    const password = document.getElementById("password").value;  // Obtiene el valor del campo de contraseña del formulario de login.
+
+    console.log("USERNAME: " + user + ". PASSWORD: " + password);  // Muestra en consola el usuario y la contraseña ingresados.
+
+    // Realizar una solicitud al backend para verificar el login
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'  // Asegúrate de que el contenido enviado sea de tipo JSON.
+        },
+        body: JSON.stringify({ Username: user, Password: password })  // Los datos a enviar como JSON.
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {  // Si la respuesta del servidor es exitosa, redirige al usuario.
+            window.location.href = "inicio.html";  // Redirige a la página "inicio.html" si el login es exitoso.
+        } else {
+            // Muestra un mensaje de error si el login no es exitoso.
+            document.getElementById("mensaje-error").innerText = data.message;  // Muestra el mensaje del servidor.
+            document.getElementById("mensaje-error").style.display = "block";  // Muestra el mensaje de error.
+        }
+    })
+    .catch(error => {
+        // Si ocurre un error en la solicitud, muestra un mensaje de error.
+        console.error("Error en la solicitud:", error);
+        document.getElementById("mensaje-error").innerText = "Error en la conexión con el servidor.";
+        document.getElementById("mensaje-error").style.display = "block";
+    });
+});
+
+
+function iniciarSesion(user, pass) {
+    // Validar si los campos están vacíos
+    if (!user || !pass) {
+        // Mostrar un mensaje en pantalla si falta completar algún campo
+        document.getElementById("mensaje-error").innerText = "Por favor, completa todos los campos.";
+        document.getElementById("mensaje-error").style.display = "block";
+        return; // Salir de la función sin enviar la solicitud
+    }
+
+    // Si los campos están completos, envía la solicitud al servidor
+    fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Asegúrate de enviar datos en formato JSON
+        },
+        body: JSON.stringify({
+            email: user, // Ajusta las claves según lo que espera tu backend
+            password: pass,
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirigir si el inicio de sesión es exitoso
+                window.location.href = "inicio.html";
+            } else {
+                // Mostrar el mensaje de error devuelto por el servidor
+                document.getElementById("mensaje-error").innerText = data.message;
+                document.getElementById("mensaje-error").style.display = "block";
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            document.getElementById("mensaje-error").innerText = "Error en la conexión con el servidor.";
+            document.getElementById("mensaje-error").style.display = "block";
+        });
+}
+*/
